@@ -2,15 +2,15 @@ FROM ruby:2.3-slim
 # Instala nossas dependencias
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
       build-essential nodejs libpq-dev imagemagick
-# setup path
+# Seta nosso path
 ENV INSTALL_PATH /secret_santa
 # Cria nosso diretório
 RUN mkdir -p $INSTALL_PATH
-# setup path like principal folder
+# Seta o nosso path como o diretório principal
 WORKDIR $INSTALL_PATH
-# conpy gemfile to container
+# Copia o nosso Gemfile para dentro do container
 COPY Gemfile ./
-# setuph path for Gems
+# Seta o path para as Gems
 ENV BUNDLE_PATH /box
-#Copy our code to container
+# Copia nosso código para dentro do container
 COPY . .
